@@ -1,0 +1,27 @@
+{
+  "name": "sistema-marcado",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider react-scripts build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "json2csv": "^5.0.6",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.9.6",
+    "mysql2": "^3.12.0",
+    "pdfkit": "^0.16.0"
+  }
+}

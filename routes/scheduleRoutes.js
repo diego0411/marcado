@@ -1,5 +1,6 @@
+
 const express = require("express");
-const { configureSchedule } = require("../controllers/scheduleController");
+const { configureSchedule, getScheduleController } = require("../controllers/scheduleController");
 const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
@@ -11,5 +12,8 @@ router.post("/set", authMiddleware, (req, res, next) => {
   }
   configureSchedule(req, res, next);
 });
+
+// ✅ Endpoint para obtener el horario actual
+router.get("/get", authMiddleware, getScheduleController);
 
 module.exports = router;

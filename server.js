@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5001;
 
 // ✅ CORS actualizado para producción
 app.use(cors({
-  origin: ["http://localhost:3000", "https://marcadof-git-main-diegos-projects-dd0d649f.vercel.app"], // 🔹 Agrega la URL del frontend en Vercel
+  origin: ["http://localhost:3000", "https://marcadof.vercel.app"], // 🔹 Agrega la URL del frontend en Vercel
   credentials: true
 }));
 

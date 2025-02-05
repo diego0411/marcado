@@ -1,15 +1,22 @@
 const db = require("../config/db");
 
-const setSchedule = async (arrivalTime, departureTime) => {
-  await db.query(
-    "INSERT INTO schedules (id, arrival_time, departure_time) VALUES (1, ?, ?) ON DUPLICATE KEY UPDATE arrival_time=?, departure_time=?",
-    [arrivalTime, departureTime, arrivalTime, departureTime]
-  );
+// ✅ Función para obtener el horario general
+const getSchedule = async () => {
+  try {
+    const [schedule] = await db.query("SELECT arrival_time, departure_time FROM schedules LIMIT 1");
+
+    if (schedule.length === 0) {
+      console.log("⚠️ No se encontró un horario registrado.");
+      return null;
+    }
+
+    console.log("📌 Horario obtenido:", schedule[0]);
+    return schedule[0];
+  } catch (error) {
+    console.error("❌ Error al obtener el horario:", error);
+    throw error;
+  }
 };
 
-const getScheduleByUserId = async (userId) => {
-  const [schedule] = await db.query("SELECT arrival_time, departure_time FROM schedules WHERE user_id = ?", [userId]);
-  return schedule[0];
-};
-
-module.exports = { setSchedule, getScheduleByUserId };
+// ✅ Exportamos la función correctamente
+module.exports = { getSchedule };

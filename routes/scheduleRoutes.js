@@ -3,6 +3,7 @@ const { configureSchedule } = require("../controllers/scheduleController");
 const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
-router.post("/schedule", authMiddleware, configureSchedule);
+
+router.post("/set", authMiddleware, configureSchedule);
 
 module.exports = router;

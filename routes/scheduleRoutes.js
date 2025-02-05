@@ -4,6 +4,12 @@ const authMiddleware = require("../middleware/authMiddleware");
 
 const router = express.Router();
 
-router.post("/set", authMiddleware, configureSchedule);
+// ✅ Solo los ADMIN pueden configurar el horario
+trouter.post("/set", authMiddleware, (req, res, next) => {
+  if (req.user.role !== "ADMIN") {
+    return res.status(403).json({ message: "⚠️ Solo los administradores pueden configurar horarios." });
+  }
+  configureSchedule(req, res, next);
+});
 
 module.exports = router;

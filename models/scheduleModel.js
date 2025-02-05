@@ -1,9 +1,9 @@
 const db = require("../config/db");
 
-const setSchedule = async (userId, arrivalTime, departureTime) => {
+const setSchedule = async (arrivalTime, departureTime) => {
   await db.query(
-    "INSERT INTO schedules (user_id, arrival_time, departure_time) VALUES (?, ?, ?) ON DUPLICATE KEY UPDATE arrival_time=?, departure_time=?",
-    [userId, arrivalTime, departureTime, arrivalTime, departureTime]
+    "INSERT INTO schedules (id, arrival_time, departure_time) VALUES (1, ?, ?) ON DUPLICATE KEY UPDATE arrival_time=?, departure_time=?",
+    [arrivalTime, departureTime, arrivalTime, departureTime]
   );
 };
 

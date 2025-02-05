@@ -11,10 +11,12 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // ✅ CORS actualizado para producción
+const cors = require("cors");
 app.use(cors({
-  origin: ["http://localhost:3000", "https://marcadof.vercel.app","https://marcadof-diegos-projects-dd0d649f.vercel.app:"], // 🔹 Agrega la URL del frontend en Vercel
+  origin: ["http://localhost:3000", "https://marcadof.vercel.app"], // 🔹 Usa la URL real de tu frontend en Vercel
   credentials: true
 }));
+
 
 app.use(express.json());
 app.use(cookieParser());

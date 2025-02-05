@@ -11,19 +11,19 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // ✅ CORS actualizado para producción
-const cors = require("cors");
 app.use(cors({
-  origin: ["http://localhost:3000", "https://marcadof.vercel.app"], // 🔹 Usa la URL real de tu frontend en Vercel
-  credentials: true
+  origin: ["http://localhost:3000", "https://marcadof.vercel.app"], // 🔹 Agrega la URL de Vercel correctamente
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // 🔹 Asegura que todos los métodos HTTP estén permitidos
+  allowedHeaders: ["Content-Type", "Authorization"], // 🔹 Permite estos headers en las solicitudes
+  credentials: true // 🔹 Habilita el envío de cookies y sesiones
 }));
-
 
 app.use(express.json());
 app.use(cookieParser());
 
 // ✅ Endpoint de prueba para Railway
 app.get("/", (req, res) => {
-  res.send("API funcionando correctamente en Railway");
+  res.send("API funcionando correctamente con CORS configurado");
 });
 
 // ✅ Rutas principales

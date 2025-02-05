@@ -7,6 +7,7 @@ const authRoutes = require("./routes/authRoutes");
 const markRoutes = require("./routes/markRoutes");
 const exportRoutes = require("./routes/exportRoutes");
 const scheduleRoutes = require("./routes/scheduleRoutes");
+const userManagementRoutes = require("./routes/userManagementRoutes");
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -32,6 +33,7 @@ app.use("/auth", authRoutes);
 app.use("/marking", markRoutes);
 app.use("/export", exportRoutes);
 app.use("/schedule", scheduleRoutes);
+app.use("/user-management", userManagementRoutes);
 
 // ✅ Manejo de errores globales para evitar que Railway cierre el proceso
 process.on("uncaughtException", (err) => {
